@@ -7,7 +7,6 @@ check_map()
     //una salida = E
     //una entrada = P
     //Al menos un collectible
-
     //Hay que recoger todos los collectibles
     //La salida es accesible desde la entrada?
 }
