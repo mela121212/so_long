@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   images.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: carmelag <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/28 11:48:18 by carmelag          #+#    #+#             */
+/*   Updated: 2025/01/28 11:48:21 by carmelag         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void load_images(t_complete *game)
@@ -8,7 +20,7 @@ void load_images(t_complete *game)
     game->barrier = mlx_xpm_file_to_image(game->mlxpointer, "game_images/wall.xpm", &i, &j);
     game->player = mlx_xpm_file_to_image(game->mlxpointer, "game_images/player.xpm", &i, &j);
     game->exit = mlx_xpm_file_to_image(game->mlxpointer, "game_images/exit.xpm", &i, &j);
-    game->collectable = mlx_xpm_file_to_image(game->mlxpointer, "game_images/item.xpm", &i, &j);
+    game->collectable = mlx_xpm_file_to_image(game->mlxpointer, "game_images/collectable.xpm", &i, &j);
 }
 
 void place_image(t_complete *game, char element, int height, int width)

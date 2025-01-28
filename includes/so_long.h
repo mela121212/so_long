@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: carmelag <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/28 11:45:41 by carmelag          #+#    #+#             */
+/*   Updated: 2025/01/28 11:45:50 by carmelag         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
 #include <unistd.h>
 #include <fcntl.h>
-#include "minilibx"
+#include "mlx.h"
 #include <stdio.h>
 #include <errno.h>
 #include <string.h>
