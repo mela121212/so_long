@@ -24,7 +24,7 @@ void	move_player(t_game *game, int y_offset, int x_offset)
         if (game->map[new_y][new_x] == 'C' || game->map[new_y][new_x] == '0') 
         {
             if (game->map[new_y][new_x] == 'C') 
-                game->count--;  // Decrementar el contador si es un coleccionable
+                game->count_collectables--;  // Decrementar el contador si es un coleccionable
             
             // Mover al jugador a la nueva casilla
             game->map[game->y][game->x] = '0';  // Vaciar la posición anterior
@@ -34,11 +34,11 @@ void	move_player(t_game *game, int y_offset, int x_offset)
         // Actualizar la posición y el número de pasos
         game->y = new_y;
         game->x = new_x;
-        game->step++;
-        ft_write_itoa(game->step); //es necesario esto de los pasos???
+        //game->step++;
+        //ft_write_itoa(game->step); //es necesario esto de los pasos???
     }
     // Verificar si el jugador llegó a la salida y recogió todos los coleccionables
-    else if (game->map[new_y][new_x] == 'E' && game->count == 0) 
+    else if (game->map[new_y][new_x] == 'E' && game->count_collectables == 0) 
     {
         game->finish = 1;
     }
@@ -47,7 +47,7 @@ void	move_player(t_game *game, int y_offset, int x_offset)
 int	press_key(int keycode, t_game *game)
 {
     if (keycode == ESC)
-        ft_exit(game);
+        ft_exit(game, "Error: Escape pressed.");
     else if (game->finish == 0)
     {
         if (keycode == W) 

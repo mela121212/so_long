@@ -12,23 +12,22 @@
 
 #include "so_long.h"
 
-int is_map_rectangular(t_complete *game)
+int is_map_rectangular(t_game *game)
 {
-    int width;
     int i = 1;
 
     if (!game->map || !game->map[0])
         return(0);  // Mapa vacío
     while (game->map[i])
     {
-        if (ft_strlen(game->map[i]) != game->width)  // Compara la longitud con la primera linea del mapa
+        if (ft_strlen(game->map[i]) != (size_t)game->width)  // Compara la longitud con la primera linea del mapa
             return(0);  // No es rectangular
         i++;
     }
     return(1);  // Es rectangular
 }
 
-int is_map_enclosed(t_complete *game)
+int is_map_enclosed(t_game *game)
 {
     int i;
 
@@ -108,7 +107,6 @@ int check_map(t_game *game)
     }
     if (!validate_map_elements(game))
         return(0);
-    if (!is_map_fully_accessible(game))
-        return(0);
+    check_path(game);
     return(1);
 }

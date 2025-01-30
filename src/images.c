@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-void load_images(t_complete *game)
+void load_images(t_game *game)
 {
     int i, j;
 
@@ -23,7 +23,7 @@ void load_images(t_complete *game)
     game->collectable = mlx_xpm_file_to_image(game->mlxpointer, "game_images/collectable.xpm", &i, &j);
 }
 
-void place_image(t_complete *game, char element, int height, int width)
+void place_image(t_game *game, char element, int height, int width)
 {
     void *image = NULL;
 
@@ -41,13 +41,13 @@ void place_image(t_complete *game, char element, int height, int width)
         mlx_put_image_to_window(game->mlxpointer, game->winpointer, image, width * 40, height * 40);
 }
 
-void render_game(t_complete *game)
+void render_game(t_game *game)
 {
     int height = 0;
     int width;
 
-    game->collectables = 0;  // Reinicia el contador de coleccionables
-    while (height < game->heightmap)
+    game->count_collectables = 0;  // Reinicia el contador de coleccionables
+    while (height < game->height)
     {
         width = 0;
         while (game->map[height][width])
@@ -55,7 +55,7 @@ void render_game(t_complete *game)
             // Llama a place_image para cada elemento del mapa
             place_image(game, game->map[height][width], height, width);
             if (game->map[height][width] == 'C')
-                game->collectables++;  // Incrementa el número de coleccionables
+                game->collectable++;  // Incrementa el número de coleccionables
             width++;
         }
         height++;

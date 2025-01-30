@@ -26,23 +26,30 @@ void	*ft_memset(void *b, int c, size_t len)
 	return (b);
 }
 
-size_t	ft_strlen(const char *s)
+void ft_putstr_fd(char *str, int fd)
 {
-	size_t i;
+    if (!str)
+        return;
+    write(fd, str, ft_strlen(str));
+}
+
+void ft_putendl_fd(char *str, int fd)
+{
+    if (!str)
+        return;
+    ft_putstr_fd(str, fd);
+    write(fd, "\n", 1);
+}
+
+/*int	ft_strlen(const char *s)
+{
+	size_t	i; //un size_t o un int??
 
 	i = 0;
 	while ((s[i] != '\0') || (s[i] != '\n'))
 		i++;
 	return (i);
-}
-
-void	ft_exit(t_game *game, char *error_msg)
-{
-	destroy(game);
-	ft_putstr_fd("Error: ", STDERR_FILENO);
-	ft_putendl_fd(error_msg, STDERR_FILENO);
-	exit(EXIT_FAILURE);
-}
+}*/
 
 void free_map(char **map, int height)
 {

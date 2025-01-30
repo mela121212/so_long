@@ -19,7 +19,7 @@ static int add_line_to_map(t_game *game, char *line)
 
     i = 0;
     game->height++;
-    new_map = (char*)malloc(sizeof(char) * (game->height + 1));
+    new_map = (char**)malloc(sizeof(char*) * (game->height + 1));
     new_map[game->height] = NULL; //el ultimo str del char** tiene que ser un NULL
     while(i < (game->height - 1)) //Hay que dejar espacio para la linea nueva
     {
@@ -37,17 +37,15 @@ static int add_line_to_map(t_game *game, char *line)
 int read_map(t_game *game, char **argv)
 {
     char    *line;
-    int     i;
 
-    i = 0;
     game->fd = open(argv[1], O_RDONLY);
     if(game->fd < 0)
         return(0);
     while(1)
     {
         line = get_next_line(game->fd);
-        add_line_to_map(game->map, line);
-        if(!add_line_to_map)
+        add_line_to_map(game, line);
+        if(line == NULL)
             break;
     }
     close(game->fd);
